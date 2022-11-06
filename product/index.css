@@ -1,0 +1,14 @@
+#nft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#nft img {
+  width: 400px;
+}
+
+#nft #nft_img, #nft #nft_details {
+  margin: 10px;
+}
+/*# sourceMappingURL=index.css.map */
