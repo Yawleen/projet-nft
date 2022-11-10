@@ -22,6 +22,8 @@ async function displayNFTDetails(){
     document.getElementById('nft_artisteName').innerText = nftInfos.creator.username;
     document.getElementById('nft_sales').innerText = nftInfos.sales;
     document.getElementById('nft_description').innerText = nftInfos.description;
+    document.getElementById('nft_description').innerText = nftInfos.description;
+    document.getElementById('nft_src').src = nftInfos.image_url;
 
     console.log(window.localStorage);
 
@@ -33,24 +35,34 @@ async function displayNFTDetails(){
     }
 
     // ajout d'événements à l'icon coeur -> favoris 
-    console.log(document.getElementsByClassName('heart')[0]); 
     document.getElementsByClassName('heart')[0].addEventListener("click", function() {
         let favorisList = []; 
         // l'item n'existe pas dans le localStorage
         if (localStorage.getItem('favoris') === null) {
             favorisList.push(nftInfos.name);
             localStorage.setItem("favoris", JSON.stringify(favorisList));
+            document.getElementsByClassName('heart')[0].style.color = 'red';
         }
         else { // l'item existe déjà dans le localStorage donc on ajoute un nouveau nft dans la liste des favoris 
+            console.log(favorisList);
             let booleanDuplicate =  false; 
             for (fav of JSON.parse(window.localStorage.favoris)) {
                 fav === nftInfos.name ? booleanDuplicate = true : null; 
                 favorisList.push(fav);
             }
-            if (booleanDuplicate === false){favorisList.push(nftInfos.name);}
+
+            // ajout d'un NFT dans les favoris 
+            if ( booleanDuplicate === false) {
+                favorisList.push(nftInfos.name);
+                document.getElementsByClassName('heart')[0].style.color = 'red';
+            }
+            else { // retrait du NFT dans les favoris 
+                favorisList = favorisList.filter(item => item !== nftInfos.name);
+                document.getElementsByClassName('heart')[0].style.color = 'black';
+            }
+            console.log(favorisList);
             localStorage.setItem("favoris", JSON.stringify(favorisList));
         }
-        document.getElementsByClassName('heart')[0].style.color = 'red';
         console.log(window.localStorage);
     });
 }
