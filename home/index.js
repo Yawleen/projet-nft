@@ -1,7 +1,9 @@
-// Sélection de la gallerie dans le DOM
+// Sélection d'éléments dans le DOM
 
 const gallery = document.querySelector(".gallery");
-
+const creatorsFilter = document.querySelector("#filter-by-creators");
+const creatorsList = document.querySelector(".creators-list");
+const creatorsReset = document.querySelector(".creators-reset");
 
 // Création d'un bouton pour afficher plus de cartes
 
@@ -9,12 +11,24 @@ const loadMoreButton = document.createElement("button");
 loadMoreButton.className = "load-more";
 loadMoreButton.innerText = "Charger plus";
 
-
 // Variable qui va contenir les données à afficher dans la gallerie
 
 let galleryData = "";
 
+// Variable qui va contenir les créateurs sélectionnés par l'utilisateur pour filter par créateur
 
+let selectedCreators = [];
+
+// Gestionnaire d'événement qui va permettre de fermer le filtre de créateurs lorsqu'utilisateur clique en dehors du filtre
+
+document.addEventListener("click", (e) => {
+  if (
+    !e.target.closest("#creators-filter-container") &&
+    creatorsFilter.classList.contains("active")
+  ) {
+    creatorsFilter.classList.remove("active");
+  }
+});
 
 // Méthode qui permet de requêter l'api et récupérer des données
 
@@ -24,8 +38,15 @@ fetch("https://awesome-nft-app.herokuapp.com/")
     gallery.innerHTML = "";
     addCards(data.assets);
     loadMoreButton.addEventListener("click", () => addCards(galleryData));
-  }).catch(error => console.error(error.message));
-
+    creatorsFilter.addEventListener("click", (e) =>
+      e.target.classList.toggle("active")
+    );
+    fillCreatorsList(data.assets);
+    creatorsReset.addEventListener("click", () =>
+      resetCreatorsSelection(data.assets)
+    );
+  })
+  .catch((error) => console.error(error.message));
 
 // Fonction qui crée des cartes à partir du tableau de données retourné par l'api
 
@@ -90,3 +111,73 @@ function addCards(dataArr, maxToDisplay = 6) {
   gallery.innerHTML += productCards;
 }
 
+// Fonction qui réinitialise les créateurs sélectionnés
+
+function resetCreatorsSelection(dataArr) {
+  selectedCreators = [];
+  Array.from(creatorsList.children).forEach(
+    (creatorItem) => (creatorItem.className = "creator-item")
+  );
+  gallery.innerHTML = "";
+  addCards(dataArr);
+}
+
+// Fonction qui permet de remplir la liste de créateurs avec les données renvoyées par l'api
+
+function fillCreatorsList(dataArr) {
+  dataArr
+    .map((nftObj) => nftObj.creator.username)
+    .filter((creator) => creator !== "")
+    .forEach((creator) => {
+      const listItem = document.createElement("li");
+      listItem.className = "creator-item";
+      listItem.innerText = creator;
+      listItem.addEventListener("click", (e) =>
+        handleCreatorsSelection(e, dataArr)
+      );
+      creatorsList.appendChild(listItem);
+    });
+}
+
+// Fonction qui permet de filtrer par créateur
+
+function filterByCreator(dataArr) {
+  return dataArr.filter((nftObj) =>
+    selectedCreators.includes(nftObj.creator.username)
+  );
+}
+
+// Fonction qui permet de sélectionner des créateurs
+
+function selectCreator(creatorName, dataArr) {
+  selectedCreators.push(creatorName);
+  const filteredCreators = filterByCreator(dataArr);
+  gallery.innerHTML = "";
+  addCards(filteredCreators);
+}
+
+// Fonction qui permet de désélectionner des créateurs
+
+function unselectCreator(creatorName, dataArr) {
+  const creatorToDelete = selectedCreators.findIndex(
+    (creator) => creator === creatorName
+  );
+  selectedCreators.splice(creatorToDelete, 1);
+  if (selectedCreators.length !== 0) {
+    const filteredCreators = filterByCreator(dataArr);
+    gallery.innerHTML = "";
+    addCards(filteredCreators);
+    return;
+  }
+  gallery.innerHTML = "";
+  addCards(dataArr);
+}
+
+// Fonction qui gère la sélection et la déselection d'un créateur
+
+function handleCreatorsSelection(e, dataArr) {
+  e.target.classList.toggle("selected");
+  e.target.classList.contains("selected")
+    ? selectCreator(e.target.innerText, dataArr)
+    : unselectCreator(e.target.innerText, dataArr);
+}
