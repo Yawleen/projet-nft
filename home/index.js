@@ -4,6 +4,7 @@ const gallery = document.querySelector(".gallery");
 const creatorsFilter = document.querySelector("#filter-by-creators");
 const creatorsList = document.querySelector(".creators-list");
 const creatorsReset = document.querySelector(".creators-reset");
+const creatorSearchBar = document.querySelector("#search-bar-creator");
 
 // Création d'un bouton pour afficher plus de cartes
 
@@ -45,6 +46,28 @@ fetch("https://awesome-nft-app.herokuapp.com/")
     creatorsReset.addEventListener("click", () =>
       resetCreatorsSelection(data.assets)
     );
+    creatorSearchBar.addEventListener("input", (e) => {
+      creatorsList.innerHTML = "";
+      const searchCreatorResults = data.assets.filter((nftObj) =>
+        nftObj.creator.username
+          .toLowerCase()
+          .startsWith(e.target.value.toLowerCase().trimStart())
+      );
+
+      searchCreatorResults.forEach((nftObj) => {
+        if (nftObj.creator.username !== "") {
+          const listItem = document.createElement("li");
+          selectedCreators.includes(nftObj.creator.username)
+            ? listItem.classList.add("creator-item", "selected")
+            : listItem.classList.add("creator-item");
+          listItem.innerText = nftObj.creator.username;
+          listItem.addEventListener("click", (e) =>
+            handleCreatorsSelection(e, data.assets)
+          );
+          creatorsList.appendChild(listItem);
+        }
+      });
+    });
   })
   .catch((error) => console.error(error.message));
 

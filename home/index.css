@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .search-filter, .search-functionalities .shuffle-option {
   display: flex;
   flex-direction: column;
@@ -102,7 +103,7 @@ header {
   display: flex;
   flex-direction: column;
   position: absolute;
-  width: 250px;
+  width: 270px;
   margin-top: 10px;
   font-size: 0.8rem;
   color: #222;
@@ -136,6 +137,7 @@ header {
   flex-grow: 1;
   list-style: none;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-bottom: 15px;
 }
 .search-filter-dropdown .creator-item {
@@ -144,7 +146,14 @@ header {
   cursor: pointer;
 }
 .search-filter-dropdown .creator-item.selected {
+  position: relative;
+}
+.search-filter-dropdown .creator-item.selected::after {
+  content: "✓";
   font-weight: bold;
+  position: absolute;
+  top: -2px;
+  margin-left: 10px;
 }
 .search-filter-dropdown .range-value {
   border: 1px solid #222;
