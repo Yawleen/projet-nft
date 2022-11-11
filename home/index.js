@@ -5,12 +5,33 @@ const creatorsFilter = document.querySelector("#filter-by-creators");
 const creatorsList = document.querySelector(".creators-list");
 const creatorsReset = document.querySelector(".creators-reset");
 const creatorSearchBar = document.querySelector("#search-bar-creator");
+const salesFilter = document.querySelector("#filter-by-sales");
+const maxRangeValue = document.querySelector("#max-value");
+const minRangeValue = document.querySelector("#min-value");
+const rangeSearch = document.querySelector(".range-search");
+const rangeReset = document.querySelector(".range-reset");
+
+// Regroupement des éléments filtres dans un tableau
+
+const filters = [creatorsFilter, salesFilter];
 
 // Création d'un bouton pour afficher plus de cartes
 
 const loadMoreButton = document.createElement("button");
 loadMoreButton.className = "load-more";
 loadMoreButton.innerText = "Charger plus";
+
+// Création d'une div qui sera affichée s'il n'y a pas de résultats lorsque l'utilisateur filtre par nombre de ventes
+
+const notFoundDiv = document.createElement("div");
+notFoundDiv.className = "not-found";
+notFoundDiv.innerText = "Aucun résultat trouvé. 😞";
+
+// Création d'un span qui sera affiché si l'utilisateur ne saisit pas des nombres entiers pour filtrer par nombre de ventes
+
+const errorSpan = document.createElement("span");
+errorSpan.className = "range-error";
+errorSpan.innerText = "Veuillez saisir des nombres entiers.";
 
 // Variable qui va contenir les données à afficher dans la gallerie
 
@@ -20,14 +41,17 @@ let galleryData = "";
 
 let selectedCreators = [];
 
-// Gestionnaire d'événement qui va permettre de fermer le filtre de créateurs lorsqu'utilisateur clique en dehors du filtre
+// Gestionnaire d'événement qui va permettre de fermer le filtre actif lorsqu'utilisateur clique en dehors du filtre
 
 document.addEventListener("click", (e) => {
-  if (
-    !e.target.closest("#creators-filter-container") &&
-    creatorsFilter.classList.contains("active")
-  ) {
-    creatorsFilter.classList.remove("active");
+  const activeFilter = filters.find((filter) =>
+    filter.classList.contains("active")
+  );
+
+  if (activeFilter) {
+    if (!activeFilter.parentElement.contains(e.target)) {
+      activeFilter.classList.remove("active");
+    }
   }
 });
 
@@ -39,10 +63,21 @@ fetch("https://awesome-nft-app.herokuapp.com/")
     gallery.innerHTML = "";
     addCards(data.assets);
     loadMoreButton.addEventListener("click", () => addCards(galleryData));
-    creatorsFilter.addEventListener("click", (e) =>
-      e.target.classList.toggle("active")
+    filters.forEach((filter) =>
+      filter.addEventListener("click", (e) => {
+        filters.forEach(
+          (filter) => filter !== e.target && filter.classList.remove("active")
+        );
+        if (e.target !== creatorsFilter && selectedCreators.length !== 0) {
+          resetCreatorsSelection(data.assets);
+        }
+        e.target.classList.toggle("active");
+      })
     );
     fillCreatorsList(data.assets);
+    const maxSales = Math.max(...data.assets.map((nftObj) => nftObj.sales));
+    minRangeValue.value = 0;
+    maxRangeValue.value = maxSales;
     creatorsReset.addEventListener("click", () =>
       resetCreatorsSelection(data.assets)
     );
@@ -67,6 +102,40 @@ fetch("https://awesome-nft-app.herokuapp.com/")
           creatorsList.appendChild(listItem);
         }
       });
+    });
+    rangeSearch.addEventListener("click", () => {
+      if (
+        Number.isInteger(Number(minRangeValue.value)) &&
+        Number.isInteger(Number(maxRangeValue.value))
+      ) {
+        errorSpan.remove();
+        notFoundDiv.remove();
+        const filteredSales = data.assets
+          .filter(
+            (nftObj) =>
+              minRangeValue.value <= nftObj.sales &&
+              nftObj.sales <= maxRangeValue.value
+          )
+          .sort((a, b) => a.sales - b.sales);
+        if (filteredSales.length > 0) {
+          gallery.innerHTML = "";
+          addCards(filteredSales);
+          return;
+        }
+        gallery.innerHTML = "";
+        gallery.after(notFoundDiv);
+        loadMoreButton.remove();
+      } else {
+        maxRangeValue.after(errorSpan);
+      }
+    });
+    rangeReset.addEventListener("click", () => {
+      errorSpan.remove();
+      notFoundDiv.remove();
+      minRangeValue.value = 0;
+      maxRangeValue.value = maxSales;
+      gallery.innerHTML = "";
+      addCards(data.assets);
     });
   })
   .catch((error) => console.error(error.message));

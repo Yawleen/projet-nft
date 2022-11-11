@@ -41,11 +41,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100px;
   color: #f1f1f1;
-  padding: 0 50px;
+  padding: 30px 50px;
   background-color: #222;
   box-shadow: 0 0 5px rgba(34, 34, 34, 0.293);
   z-index: 1;
@@ -53,6 +55,10 @@ header {
 
 .search-functionalities {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
 }
 .search-bar {
   display: flex;
@@ -76,8 +82,8 @@ header {
 }
 .search-bar-container {
   position: relative;
-  width: 400px;
-  margin-right: 30px;
+  max-width: 400px;
+  width: 100%;
 }
 .search-bar-dropdown {
   display: none;
@@ -123,9 +129,6 @@ header {
 .search-filter-container {
   position: relative;
 }
-.search-filter-container:not(:last-child) {
-  margin-right: 15px;
-}
 .search-filter-dropdown {
   display: none;
 }
@@ -167,12 +170,17 @@ header {
   -moz-column-gap: 5px;
        column-gap: 5px;
 }
+.search-filter-dropdown .range-error {
+  text-align: center;
+  color: rgb(209, 40, 40);
+  margin-bottom: 10px;
+}
 .search-filter-dropdown label {
   margin-bottom: 5px;
 }
 
 main {
-  padding-top: 140px;
+  padding-top: 80px;
   margin-bottom: 80px;
 }
 main h2 {
@@ -181,15 +189,20 @@ main h2 {
 }
 main .shuffle-gallery {
   padding: 0 30px;
+  text-transform: uppercase;
+  text-align: center;
   width: 100%;
-  height: 100px;
-  background: red;
+  height: 200px;
 }
 main .separator {
   height: 1px;
   width: 40%;
   margin: 50px auto;
   background-color: #222;
+}
+main .not-found {
+  text-align: center;
+  height: 30vh;
 }
 main .load-more {
   display: block;
