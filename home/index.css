@@ -182,6 +182,14 @@ main .separator {
   margin: 50px auto;
   background-color: #222;
 }
+main .load-more {
+  display: block;
+  border: 1px solid #222;
+  padding: 10px;
+  border-radius: 2px;
+  margin: 0 auto 100px;
+  cursor: pointer;
+}
 
 .gallery {
   display: grid;

@@ -3,12 +3,26 @@
 const gallery = document.querySelector(".gallery");
 
 
+// Création d'un bouton pour afficher plus de cartes
+
+const loadMoreButton = document.createElement("button");
+loadMoreButton.className = "load-more";
+loadMoreButton.innerText = "Charger plus";
+
+
+// Variable qui va contenir les données à afficher dans la gallerie
+
+let galleryData = "";
+
+
+
 // Méthode qui permet de requêter l'api et récupérer des données
 
 fetch("https://awesome-nft-app.herokuapp.com/")
   .then((response) => response.json())
   .then((data) => {
     addCards(data.assets);
+    loadMoreButton.addEventListener("click", () => addCards(galleryData));
   }).catch(error => console.error(error.message));
 
 
@@ -54,7 +68,24 @@ function createCards(dataArr) {
 
 // Fonction qui injecte dans le DOM les cartes créées
 
-function addCards(dataArr) {
-  const nftCards = createCards(dataArr);
-  gallery.innerHTML = nftCards;
+function addCards(dataArr, maxToDisplay = 6) {
+  galleryData = dataArr;
+
+  gallery.after(loadMoreButton);
+
+  const dataToDisplay = dataArr.slice(
+    gallery.children.length,
+    gallery.children.length + maxToDisplay
+  );
+
+  if (gallery.children.length + maxToDisplay >= dataArr.length) {
+    const productCards = createCards(dataToDisplay);
+    gallery.innerHTML += productCards;
+    loadMoreButton.remove();
+    return;
+  }
+
+  const productCards = createCards(dataToDisplay);
+  gallery.innerHTML += productCards;
 }
+
