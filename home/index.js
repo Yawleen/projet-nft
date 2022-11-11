@@ -21,6 +21,7 @@ let galleryData = "";
 fetch("https://awesome-nft-app.herokuapp.com/")
   .then((response) => response.json())
   .then((data) => {
+    gallery.innerHTML = "";
     addCards(data.assets);
     loadMoreButton.addEventListener("click", () => addCards(galleryData));
   }).catch(error => console.error(error.message));

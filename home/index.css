@@ -213,6 +213,11 @@ main .load-more {
 .gallery .product-image {
   height: 50%;
 }
+.gallery .product-image.skeleton-anim {
+  background: #4c4c4c;
+  -webkit-animation: skeleton 0.8s ease-in-out infinite alternate;
+          animation: skeleton 0.8s ease-in-out infinite alternate;
+}
 .gallery .product-image img {
   width: 100%;
   height: 100%;
@@ -228,6 +233,12 @@ main .load-more {
 .gallery .product-info > *:not(button) {
   flex-shrink: 0;
   margin-bottom: 10px;
+}
+.gallery .product-info > *:not(button).skeleton-anim {
+  height: 25px;
+  background: #4c4c4c;
+  -webkit-animation: skeleton 0.8s ease-in-out infinite alternate;
+          animation: skeleton 0.8s ease-in-out infinite alternate;
 }
 .gallery .product-info span {
   display: block;
@@ -254,4 +265,16 @@ footer i {
 }
 footer span {
   font-style: italic;
+}
+
+@-webkit-keyframes skeleton {
+  to {
+    opacity: 0.6;
+  }
+}
+
+@keyframes skeleton {
+  to {
+    opacity: 0.6;
+  }
 }/*# sourceMappingURL=index.css.map */
