@@ -17,14 +17,22 @@ async function displayNFTDetails(){
     console.log(nftInfos); 
 
     // Intégration des informations du NFT dans le template HTML 
-    document.getElementById('nft_title').innerText = nftInfos.name;
-    document.getElementById('nft_id').innerText = nftInfos.id;
-    document.getElementById('nft_artisteName').innerText = nftInfos.creator.username;
-    document.getElementById('nft_sales').innerText = nftInfos.sales;
-    document.getElementById('nft_description').innerText = nftInfos.description;
-    document.getElementById('nft_description').innerText = nftInfos.description;
+    document.getElementById('nft_title').innerText = nftInfos.name;  
+    document.getElementById('nft_id').innerText = nftInfos.id;  
     document.getElementById('nft_src').src = nftInfos.image_url;
 
+    if (nftInfos.creator.username !== "") {
+        console.log('in');
+        document.getElementById('nft_artisteName').innerText = nftInfos.creator.username;
+    }
+    if (nftInfos.sales !== "") {
+        console.log('in2');
+        if (nftInfos.sales !== 0) {document.getElementById('nft_sales').innerText = nftInfos.sales;}
+    }
+    if (nftInfos.description !== "") {
+        console.log('in3');
+        document.getElementById('nft_description').innerText = nftInfos.description;
+    }
     console.log(window.localStorage);
 
     // afficher un coeur rouge si le nft a été ajouté aux favoris 
