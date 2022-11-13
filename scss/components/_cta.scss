@@ -1,0 +1,26 @@
+/* Buttons for filter buttons */
+
+button {
+    font-size: var(--fs-300);
+    padding: 10px;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &.btn-primary {
+        background: none;
+        border: 1px solid var(--clr-neutral-1100);
+        color: var(--clr-neutral-1100);
+        &:hover {
+            background: var(--clr-neutral-1100);
+        }
+    }
+    &.btn-secondary {
+        background: var(--clr-neutral-1100);
+        border: 1px solid var(--clr-neutral-1100);
+        color: var(--clr-neutral-100);
+        &:hover {
+            background: none;
+            color: var(--clr-neutral-1100);
+        }
+    }
+}
