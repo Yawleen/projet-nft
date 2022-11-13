@@ -1,0 +1,28 @@
+@use './base';
+@use './components';
+@use 'base/colors' as *;
+@use 'base/typography' as *;
+@use 'base/media-query' as *;
+
+/* generate variables for styling */
+:root {
+    @each $color, $shades in $colors {
+        @each $shade, $value in $shades {
+            --clr-#{$color}-#{$shade}: #{$value};
+        }
+    }
+    @each $screen-size, $font-size in $type-scale {
+        @if $screen-size == small {
+            @each $size, $value in $font-size {
+                --fs-#{$size}: #{$value};
+            }
+        } @else {
+            @include mq(medium) {
+                @each $size, $value in $font-size {
+                    --fs-#{$size}: #{$value};
+                }
+            }
+        }
+        
+    }
+} 

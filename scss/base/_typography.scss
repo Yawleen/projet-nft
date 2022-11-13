@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+h1 {
+    font-size: var(--fs-600);
+}
+h2 {
+    font-size: var(--fs-500);
+}
+h3 {
+    font-size: var(--fs-400);
+}
+p {
+    font-size: var(--fs-300);
+}
+a, a:visited, a:active {
+    text-decoration: none;
+}
+$type-scale: (
+    small:(
+        300: 1rem,
+        400: 1.125rem,
+        500: 1.563rem,
+        600: 1.953rem,
+        700: 2.442rem,
+        800: 3.052rem,
+    ),
+    large:(
+        300: 1rem,
+        400: 1.425rem,
+        500: 2rem,
+        600: 2.827rem,
+        700: 4rem,
+        800: 5.653rem,
+    ),
+);
