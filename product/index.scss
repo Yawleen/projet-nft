@@ -41,7 +41,7 @@ header {
 #nft {
   display: flex;
   column-gap: 50px;
-  padding: 20px;
+  padding: 0 30px;
   margin: 100px 0;
 
   &-illustration {
@@ -50,6 +50,11 @@ header {
     padding: 5px;
     border: 1px solid #222;
     flex-shrink: 0;
+
+    &.skeleton-anim {
+      background-color: #222;
+      animation: skeleton-anim 1s alternate infinite;
+    }
 
     img {
       width: 100%;
@@ -68,6 +73,13 @@ header {
     column-gap: 100px;
     margin-bottom: 20px;
 
+    &.skeleton-anim {
+      width: 48%;
+      height: 30px;
+      background-color: #222;
+      animation: skeleton-anim 1s alternate infinite;
+    }
+
     &__text {
       font-size: 1.5rem;
       font-weight: 700;
@@ -81,6 +93,13 @@ header {
   .nft {
     &-info {
       margin-bottom: 15px;
+
+      &.skeleton-anim {
+        width: 45%;
+        height: 25px;
+        background-color: #222;
+        animation: skeleton-anim 1s alternate infinite;
+      }
 
       &__type {
         font-weight: 600;
@@ -115,5 +134,12 @@ footer {
 
   span {
     font-style: italic;
+  }
+}
+
+
+@keyframes skeleton-anim {
+  to {
+    opacity: 0.6;
   }
 }

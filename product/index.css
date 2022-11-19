@@ -41,7 +41,7 @@ header {
   display: flex;
   -moz-column-gap: 50px;
        column-gap: 50px;
-  padding: 20px;
+  padding: 0 30px;
   margin: 100px 0;
 }
 #nft-illustration {
@@ -50,6 +50,11 @@ header {
   padding: 5px;
   border: 1px solid #222;
   flex-shrink: 0;
+}
+#nft-illustration.skeleton-anim {
+  background-color: #222;
+  -webkit-animation: skeleton-anim 1s alternate infinite;
+          animation: skeleton-anim 1s alternate infinite;
 }
 #nft-illustration img {
   width: 100%;
@@ -67,6 +72,13 @@ header {
        column-gap: 100px;
   margin-bottom: 20px;
 }
+#nft-title.skeleton-anim {
+  width: 48%;
+  height: 30px;
+  background-color: #222;
+  -webkit-animation: skeleton-anim 1s alternate infinite;
+          animation: skeleton-anim 1s alternate infinite;
+}
 #nft-title__text {
   font-size: 1.5rem;
   font-weight: 700;
@@ -76,6 +88,13 @@ header {
 }
 #nft .nft-info {
   margin-bottom: 15px;
+}
+#nft .nft-info.skeleton-anim {
+  width: 45%;
+  height: 25px;
+  background-color: #222;
+  -webkit-animation: skeleton-anim 1s alternate infinite;
+          animation: skeleton-anim 1s alternate infinite;
 }
 #nft .nft-info__type {
   font-weight: 600;
@@ -104,4 +123,16 @@ footer i {
 }
 footer span {
   font-style: italic;
+}
+
+@-webkit-keyframes skeleton-anim {
+  to {
+    opacity: 0.6;
+  }
+}
+
+@keyframes skeleton-anim {
+  to {
+    opacity: 0.6;
+  }
 }/*# sourceMappingURL=index.css.map */
