@@ -170,9 +170,9 @@ function createCards(dataArr) {
           <p class="product-sales"><span>Nombre de ventes</span> ${
             data.sales
           }</p>
-          <button class="more-info" onclick="window.open('../product/index.html?id=${
+          <button class="more-info" onclick="window.location.href = '../product/index.html?id=${
             data.id
-          }', '_blank')">Plus d'info</button>
+          }'">Plus d'info</button>
         </div>
     </div>`;
   }
