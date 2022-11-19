@@ -219,9 +219,11 @@ main .load-more {
   grid-template-columns: repeat(auto-fit, 360px);
   grid-auto-rows: 620px;
   justify-content: center;
+  width: 100%;
+  max-width: 1500px;
   gap: 20px;
   padding: 0 30px;
-  margin-bottom: 50px;
+  margin: 0 auto 50px;
 }
 .gallery .product-card {
   width: 100%;
