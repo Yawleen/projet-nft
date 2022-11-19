@@ -1,42 +1,21 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   min-width: 320px;
   min-height: 100vh;
 }
 
-.search-filter-dropdown .range-reset, .search-filter-dropdown .range-search, .search-filter-dropdown .creators-reset {
-  font-size: 0.8rem;
-  color: #222;
-  padding: 5px;
-  border: none;
-  cursor: pointer;
-}
-
 header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -45,225 +24,70 @@ header {
   color: #f1f1f1;
   padding: 30px 50px;
   background-color: #222;
-  -webkit-box-shadow: 0 0 5px rgba(34, 34, 34, 0.293);
-          box-shadow: 0 0 5px rgba(34, 34, 34, 0.293);
+  box-shadow: 0 0 5px rgba(34, 34, 34, 0.293);
   z-index: 1;
 }
 
-.search-functionalities {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 15px;
-  width: 100%;
-}
-
-.search-bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-column-gap: 10px;
-          column-gap: 10px;
-  width: 100%;
-  padding: 0 10px;
-  background-color: #fff;
-  border-radius: 3px;
-}
-
-.search-bar input {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-
-.search-bar i {
-  color: #222;
-}
-
-.search-bar-container {
-  position: relative;
-  max-width: 400px;
-  width: 100%;
-}
-
-.search-bar-dropdown {
-  display: none;
-}
-
-.search-bar-dropdown.opened {
-  display: block;
-  position: absolute;
-  width: 100%;
-  margin-top: 10px;
-  font-size: 0.8rem;
-  color: #222;
-  background-color: #fff;
-  border: 1px solid #222;
-  border-radius: 3px;
-  padding: 10px 20px;
-}
-
-.search-filter.active {
-  color: #f1f1f1;
-  background-color: transparent;
-  border: 1px solid #f1f1f1;
-}
-
-.search-filter.active + .search-filter-dropdown {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  position: absolute;
-  width: 270px;
-  margin-top: 10px;
-  font-size: 0.8rem;
-  color: #222;
-  background-color: #fff;
-  border: 1px solid #222;
-  border-radius: 3px;
-  padding: 10px 20px;
-  height: 300px;
-  overflow: hidden;
-}
-
-.search-filter.active + #range-dropdown {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: auto;
-}
-
-.search-filter-container {
-  position: relative;
-}
-
-.search-filter-dropdown {
-  display: none;
-}
-
-.search-filter-dropdown .search-bar {
-  border: 1px solid #222;
-  margin-bottom: 20px;
-}
-
-.search-filter-dropdown .creators-list {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  list-style: none;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  margin-bottom: 15px;
-}
-
-.search-filter-dropdown .creator-item {
-  height: 25px;
-  margin-bottom: 10px;
+.home-icon {
+  font-size: 1.4rem;
+  margin-left: auto;
   cursor: pointer;
 }
-
-.search-filter-dropdown .creator-item.selected {
-  position: relative;
-}
-
-.search-filter-dropdown .creator-item.selected::after {
-  content: "✓";
-  font-weight: bold;
-  position: absolute;
-  top: -2px;
-  margin-left: 10px;
-}
-
-.search-filter-dropdown .range-value {
-  border: 1px solid #222;
-  padding: 10px;
-  border-radius: 2px;
-  outline: none;
-  margin-bottom: 10px;
-}
-
-.search-filter-dropdown .range-buttons-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-column-gap: 5px;
-          column-gap: 5px;
-}
-
-.search-filter-dropdown .range-error {
-  text-align: center;
-  color: #d12828;
-  margin-bottom: 10px;
-}
-
-.search-filter-dropdown label {
-  margin-bottom: 5px;
+.home-icon a {
+  color: inherit;
 }
 
 #nft {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
+  -moz-column-gap: 50px;
+       column-gap: 50px;
   padding: 20px;
+  margin: 100px 0;
 }
-
-#nft img {
+#nft-illustration {
   width: 400px;
+  height: 400px;
+  padding: 5px;
+  border: 1px solid #222;
+  flex-shrink: 0;
 }
-
-#nft #nft_img, #nft #nft_details {
-  margin: 10px;
+#nft-illustration img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-
-#nft #nft_title {
-  font-size: 25px;
-  margin-bottom: 16px;
+#nft-details {
+  flex-grow: 1;
+}
+#nft-title {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 100px;
+       column-gap: 100px;
+  margin-bottom: 20px;
+}
+#nft-title__text {
+  font-size: 1.5rem;
   font-weight: 700;
 }
-
-#nft .info {
-  margin: 10px 0;
+#nft-artist-name {
+  font-weight: normal;
 }
-
-#nft .artist {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+#nft .nft-info {
+  margin-bottom: 15px;
 }
-
-#nft .artist #nft_artisteName {
-  margin-left: 5px;
-}
-
-#nft div:nth-child(5) p:nth-child(1) {
+#nft .nft-info__type {
   font-weight: 600;
-  padding: 6px 0;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
-
 #nft .heart {
-  color: black;
+  font-size: 1.3rem;
+  color: #222;
   cursor: pointer;
+}
+#nft .heart:hover {
+  color: pink;
 }
 
 footer {
@@ -274,13 +98,10 @@ footer {
   background-color: #222;
   padding: 10px 0;
 }
-
 footer i {
   font-size: 0.7rem;
   color: pink;
 }
-
 footer span {
   font-style: italic;
-}
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */
