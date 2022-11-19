@@ -1,101 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,1,200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="index.css">
     <title>Projet NFT</title>
 </head>
+
 <body>
-    <div id="container">
-        <header>
-            <div class="search-functionalities">
-                <div class="search-bar-container">
-                    <div class="search-bar">
-                        <input type="text" placeholder="Rechercher une NFT" id="search-bar">
-                        <i class="bi bi-search"></i>
-                    </div>
-                    <div class="search-bar-dropdown">
-                        <ul class="search-bar-results">
-    
-                        </ul>
-                    </div>
-                </div>
-                <div id="creators-filter-container" class="search-filter-container">
-                    <button id="filter-by-creators" class="search-filter">
-                        Filtrer par créateur
-                    </button>
-                    <div class="search-filter-dropdown">
-                        <div class="search-bar">
-                            <input type="text" placeholder="Rechercher un créateur" id="search-bar-creator">
-                            <i class="bi bi-search"></i>
-                        </div>
-                        <ul class="creators-list">
-    
-                        </ul>
-                        <button class="creators-reset">Tout désélectionner</button>
-                    </div>
-                </div>
-                <div id="sales-filter-container" class="search-filter-container">
-                    <button id="filter-by-sales" class="search-filter">
-                        Filtrer par nombre de ventes
-                    </button>
-                    <div id="range-dropdown" class="search-filter-dropdown">
-                        <label for="min-value">Valeur minimale :</label>
-                        <input type="text" id="min-value" class="range-value">
-                        <label for="max-value">Valeur maximale :</label>
-                        <input type="text" id="max-value" class="range-value">
-                        <div class="range-buttons-container">
-                            <button class="range-search">Rechercher</button>
-                            <button class="range-reset">Réinitialiser</button>
-                        </div>
-                    </div>
-                </div>
-                <button class="shuffle-option">
-                    Shuffle
-                </button>
+    <header>
+        <div class="home-icon">
+            <a href="../home/index.html">
+                <i class="bi bi-house-door-fill"></i>
+            </a>
+        </div>
+    </header>
+
+    <div id="nft">
+        <!--- NFT --->
+        <div id="nft-illustration" class="skeleton-anim">
+            <img id="nft-illustration__image" src="" />
+        </div>
+        <!--- Détails concernant le NFT--->
+        <div id="nft-details">
+            <!--Nom NFT-->
+            <div id="nft-title" class="skeleton-anim">
+                <p id="nft-title__text"></p>
+                <span class="material-symbols-outlined heart"></span>
             </div>
-        </header>
-
-        <div id="nft">
-            <!--- NFT --->
-            <div id="nft_img">
-                <img id="nft_src" src=""/>
+            <!--NFT ID-->
+            <div class="nft-info skeleton-anim">
+                <p class="nft-info__type"></p>
+                <p id="nft-info__id"></p>
             </div>
-            <!--- Détails concernant le NFT--->
-            <div id="nft_details">
-                <!--Nom NFT-->
-                <div id="nft_title"></div>
-                <!--NFT ID-->
-                <div id="nft_id"></div>
 
-                <!--Artiste-->
-                <div class="info artist">
-                    <p>Crée par</p>
-                    <p id="nft_artisteName"></p>
-                </div>
-
-                <!--Ventes du NFT-->
-                <div class="info">
-                    <p id="nft_sales"></p>
-                </div>
-
-                <!--NFT Description-->
-                <div class="info">
-                    <p>Description</p>
-                    <p id="nft_description"></p>
-                </div>
+            <!--Artiste-->
+            <div class="nft-info sgkeleton-anim">
+                <p class="nft-info__type"><span id="nft-artist-name"></span></p>
             </div>
-            <span class="material-symbols-outlined heart">favorite</span>
+
+            <!--Ventes du NFT-->
+            <div class="nft-info skeleton-anim">
+                <p class="nft-info__type"></p>
+                <p id="nft-info__sales"></p>
+            </div>
+
+            <!--NFT Description-->
+            <div class="nft-info skeleton-anim">
+                <p class="nft-info__type"></p>
+                <p id="nft-info__description"></p>
+            </div>
         </div>
     </div>
 
-     <footer>
+    <footer>
         Made with <i class="bi bi-heart-fill"></i> <span>by Aline HY, Yolène CONSTABLE, Maria GUY DE FONTGALLAND</span>
     </footer>
     <script src="index.js"></script>
 </body>
+
 </html>
