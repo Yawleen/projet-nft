@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 320px;
+    min-height: 100vh;
+  }
+
+.search-filter-dropdown .range-reset, .search-filter-dropdown .range-search, .search-filter-dropdown .creators-reset {
+    font-size: 0.8rem;
+    color: #222;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #f1f1f1;
+    padding: 30px 50px;
+    background-color: #222;
+    box-shadow: 0 0 5px rgba(34, 34, 34, 0.293);
+    z-index: 1;
+  }
+  
+  .search-functionalities {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+  }
+  .search-bar {
+    display: flex;
+    align-items: center;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+    width: 100%;
+    padding: 0 10px;
+    background-color: #fff;
+    border-radius: 3px;
+  }
+  .search-bar input {
+    flex-grow: 1;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  .search-bar i {
+    color: #222;
+  }
+  .search-bar-container {
+    position: relative;
+    max-width: 400px;
+    width: 100%;
+  }
+  .search-bar-dropdown {
+    display: none;
+  }
+  .search-bar-dropdown.opened {
+    display: block;
+    position: absolute;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #222;
+    border-radius: 3px;
+    padding: 10px 20px;
+  }
+  .search-filter.active {
+    color: #f1f1f1;
+    background-color: transparent;
+    border: 1px solid #f1f1f1;
+  }
+  .search-filter.active + .search-filter-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 270px;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #222;
+    border-radius: 3px;
+    padding: 10px 20px;
+    height: 300px;
+    overflow: hidden;
+  }
+  .search-filter.active + #range-dropdown {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: auto;
+  }
+  .search-filter-container {
+    position: relative;
+  }
+  .search-filter-dropdown {
+    display: none;
+  }
+  .search-filter-dropdown .search-bar {
+    border: 1px solid #222;
+    margin-bottom: 20px;
+  }
+  .search-filter-dropdown .creators-list {
+    flex-grow: 1;
+    list-style: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: 15px;
+  }
+  .search-filter-dropdown .creator-item {
+    height: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  .search-filter-dropdown .creator-item.selected {
+    position: relative;
+  }
+  .search-filter-dropdown .creator-item.selected::after {
+    content: "✓";
+    font-weight: bold;
+    position: absolute;
+    top: -2px;
+    margin-left: 10px;
+  }
+  .search-filter-dropdown .range-value {
+    border: 1px solid #222;
+    padding: 10px;
+    border-radius: 2px;
+    outline: none;
+    margin-bottom: 10px;
+  }
+  .search-filter-dropdown .range-buttons-container {
+    display: flex;
+    -moz-column-gap: 5px;
+         column-gap: 5px;
+  }
+  .search-filter-dropdown .range-error {
+    text-align: center;
+    color: rgb(209, 40, 40);
+    margin-bottom: 10px;
+  }
+  .search-filter-dropdown label {
+    margin-bottom: 5px;
+  }
+
+  
+
+
+#nft {
+    display: flex;
+    padding: 20px;
+
+    img {
+        width: 400px;
+    }
+
+    #nft_img, #nft_details {
+        margin: 10px;
+    }
+
+    #nft_title {
+        font-size: 25px;
+        margin-bottom: 16px;
+        font-weight: 700;
+    }
+
+    .info {
+        margin : 10px 0;
+    }
+
+    .artist {
+        display: flex;
+        flex-direction: row;
+        
+        #nft_artisteName {
+            margin-left: 5px;
+        }
+    }
+
+    div:nth-child(5) {
+        p:nth-child(1) {
+            font-weight: 600;
+            padding: 6px 0;
+            margin-bottom: 10px;
+            //border-bottom: solid rgba(192, 183, 183, 0.753) 3px;
+        }
+    }
+
+    .heart {
+        color: black;
+        cursor: pointer;
+    }
+}
+
+
+footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #f1f1f1;
+    background-color: #222;
+    padding: 10px 0;
+  }
+  footer i {
+    font-size: 0.7rem;
+    color: pink;
+  }
+  footer span {
+    font-style: italic;
+  }
