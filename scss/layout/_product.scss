@@ -1,0 +1,97 @@
+
+.home-icon {
+    font-size: 1.4rem;
+    margin-left: auto;
+    cursor: pointer;
+  
+    a {
+      color: inherit;
+    }
+  }
+  
+  #nft {
+    display: flex;
+    column-gap: 50px;
+    padding: 0 30px;
+    margin: 100px 0;
+  
+    &-illustration {
+      width: 400px;
+      height: 400px;
+      padding: 5px;
+      border: 1px solid #222;
+      flex-shrink: 0;
+  
+      &.skeleton-anim {
+        background-color: #222;
+        animation: skeleton-anim 1s alternate infinite;
+      }
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  
+    &-details {
+      flex-grow: 1;
+    }
+  
+    &-title {
+      display: flex;
+      align-items: center;
+      column-gap: 100px;
+      margin-bottom: 20px;
+  
+      &.skeleton-anim {
+        width: 48%;
+        height: 30px;
+        background-color: #222;
+        animation: skeleton-anim 1s alternate infinite;
+      }
+  
+      &__text {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+    }
+  
+    &-artist-name {
+      font-weight: normal;
+    }
+  
+    .nft {
+      &-info {
+        margin-bottom: 15px;
+  
+        &.skeleton-anim {
+          width: 45%;
+          height: 25px;
+          background-color: #222;
+          animation: skeleton-anim 1s alternate infinite;
+        }
+  
+        &__type {
+          font-weight: 600;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  
+    .heart {
+      font-size: 1.3rem;
+      color: #222;
+      cursor: pointer;
+  
+      &:hover {
+        color: pink;
+      }
+    }
+  }
+
+  @keyframes skeleton-anim {
+    to {
+      opacity: 0.6;
+    }
+  }

@@ -22,35 +22,6 @@
     cursor: pointer;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
-    min-width: 320px;
-    min-height: 100vh;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    color: #f1f1f1;
-    padding: 30px 50px;
-    background-color: #222;
-    box-shadow: 0 0 5px rgba(34, 34, 34, 0.293);
-    z-index: 1;
-}
-
 
 .search {
     &-functionalities {
@@ -346,23 +317,6 @@ main {
     }
 }
 
-footer {
-    margin-top: auto;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #f1f1f1;
-    background-color: #222;
-    padding: 10px 0;
-
-    i {
-        font-size: 0.7rem;
-        color: pink;
-    }
-
-    span {
-        font-style: italic;
-    }
-}
 
 
 @keyframes skeleton {
