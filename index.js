@@ -103,6 +103,8 @@ fetch("https://awesome-nft-app.herokuapp.com/")
         }
       });
     });
+
+
     rangeSearch.addEventListener("click", () => {
       if (
         Number.isInteger(Number(minRangeValue.value)) &&
