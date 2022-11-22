@@ -25,6 +25,8 @@ const getRandom = async () => {
   }
 };
 
+// Fonction qui crée des cartes à partir du tableau de données retourné par l'api
+
 function displayNFT(nft) {
   const element = document.createElement('div');
   element.classList.add('shuffle-card');
@@ -52,6 +54,8 @@ function displayNFT(nft) {
   shuffleZone.append(element);
 
 }
+
+// Fonction qui permet de randomize sans créer de doublons
 
 function shuffle(min, max, array) {
   let num, already = new Object;
