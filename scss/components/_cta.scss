@@ -1,5 +1,4 @@
 /* Buttons for filter buttons */
-
 button {
     font-size: var(--fs-300);
     padding: 10px;
@@ -7,20 +6,28 @@ button {
     cursor: pointer;
 
     &.btn-primary {
-        background: none;
+        background: transparent;
         border: 1px solid var(--clr-neutral-1100);
         color: var(--clr-neutral-1100);
+        border-radius: .8em;
         &:hover {
-            background: var(--clr-neutral-1100);
+            background-color: var(--clr-neutral-1100);
+            color: var(--clr-neutral-100);
         }
     }
     &.btn-secondary {
-        background: var(--clr-neutral-1100);
-        border: 1px solid var(--clr-neutral-1100);
+        background: none;
+        border: 1px solid #d1abf9;
         color: var(--clr-neutral-100);
+        padding: 5px 20px;
+        border-radius: .8em;
+        letter-spacing: .1px;
         &:hover {
-            background: none;
+            background: #d1abf9;
             color: var(--clr-neutral-1100);
         }
+    }
+    &.btn-card {
+        margin-top: auto;
     }
 }

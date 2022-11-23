@@ -44,7 +44,7 @@ function displayNFT(nft) {
             }</p>`
           }
 
-          <button class="more-info" onclick="window.location.href = './product/index.html?id=${
+          <button class="btn-primary btn-card" onclick="window.location.href = './product/index.html?id=${
             nft.id
           }'">Plus d'info</button>
         </div>

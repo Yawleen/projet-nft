@@ -13,5 +13,9 @@ $colors: (
         1100: #000000,
     )
 );
-
+$active-color: #d1abf9;
+$bg: #151118;
+.purple {
+    color: $active-color;
+}
 

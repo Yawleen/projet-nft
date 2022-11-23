@@ -17,13 +17,13 @@ async function displayNFTDetails() {
 
   // Intégration des informations du NFT dans le DOM
   document.getElementById("nft").innerHTML = `
+  <span class="material-symbols-outlined heart">favorite</span>
     <div id="nft-illustration">
         <img id="nft-illustration__image" src="${nftInfos.image_url}" alt="nft ${nftInfos.name}"/>
     </div>
     <div id="nft-details">
         <div id="nft-title">
             <p id="nft-title__text">${nftInfos.name}</p>
-            <span class="material-symbols-outlined heart">favorite</span>
         </div>
 
         <div class="nft-info">
@@ -54,7 +54,7 @@ async function displayNFTDetails() {
   if (localStorage.getItem("favoris") !== null) {
     for (fav of JSON.parse(window.localStorage.favoris)) {
       if (fav === nftInfos.name) {
-        document.getElementsByClassName("heart")[0].style.color = "pink";
+        document.getElementsByClassName("heart")[0].style.color = "#ff0008";
       }
     }
   }
@@ -69,7 +69,7 @@ async function displayNFTDetails() {
       if (localStorage.getItem("favoris") === null) {
         favorisList.push(nftInfos.name);
         localStorage.setItem("favoris", JSON.stringify(favorisList));
-        document.getElementsByClassName("heart")[0].style.color = "pink";
+        document.getElementsByClassName("heart")[0].style.color = "#ff0008";
       } else {
         // l'item existe déjà dans le localStorage donc on ajoute un nouveau nft dans la liste des favoris
         let booleanDuplicate = false;
@@ -81,7 +81,7 @@ async function displayNFTDetails() {
         // ajout d'un NFT dans les favoris
         if (booleanDuplicate === false) {
           favorisList.push(nftInfos.name);
-          document.getElementsByClassName("heart")[0].style.color = "pink";
+          document.getElementsByClassName("heart")[0].style.color = "#ff0008";
         } else {
           // retrait du NFT dans les favoris
           favorisList = favorisList.filter((item) => item !== nftInfos.name);

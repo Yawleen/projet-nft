@@ -1,4 +1,8 @@
-
+.product-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 .home-icon {
     font-size: 1.4rem;
     margin-left: auto;
@@ -6,13 +10,20 @@
   
     a {
       color: inherit;
+      i {
+        margin-right: 1em;
+      }
     }
   }
   
   #nft {
+    position: relative;
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-neutral-1100);
     display: flex;
+    align-items: center;
     column-gap: 50px;
-    padding: 0 30px;
+    padding: 50px 30px;
     margin: 100px 0;
   
     &-illustration {
@@ -35,6 +46,7 @@
     }
   
     &-details {
+      padding-right: 1em;
       flex-grow: 1;
     }
   
@@ -80,12 +92,15 @@
     }
   
     .heart {
-      font-size: 1.3rem;
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      font-size: 2rem;
       color: #222;
       cursor: pointer;
   
       &:hover {
-        color: pink;
+        color: rgb(209, 40, 40);
       }
     }
   }
