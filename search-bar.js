@@ -1,92 +1,61 @@
 // API
 
-const URL = 'https://awesome-nft-app.herokuapp.com/';
+const URL = "https://awesome-nft-app.herokuapp.com/";
 
 // Sélection d'éléments dans le DOM
 
 const searchBar = document.querySelector("#search-bar");
-const resultsList = document.querySelector('.gallery');
-const main = document.querySelector('main');
-const container = document.querySelector('.gallery-wrapper');
-const separator = document.querySelector('.separator');
+const searchBarDropdown = document.querySelector(".search-bar-dropdown");
+const searchBarContainer = document.querySelector(".search-bar-container");
+const resultsList = document.querySelector("#results-list");
 
+// Gestionnaire d'événement qui va permettre de fermer le dropdown de la search bar lorsque l'utilisateur clique en dehors 
 
-// Variable qui va contenir les résultats de la search-bar
-
-let selectedResults = [];
-
-// Action lorsqu'on remplit la barre de recherche
-searchBar.addEventListener('keyup', (e) => {
-    const btnLoader = document.querySelector('.load-more');
-    const searchString = e.target.value.toLowerCase();
-    const filteredResults = selectedResults.filter((r) => {
-        return (
-            r.name.toLowerCase().includes(searchString)
-        )
-    });
-
-    displayResults(filteredResults);
-    main.prepend(container);
-    container.append(separator);
-    btnLoader.style.display = 'none';
-
-    // si il n'y a rien dans la barre de recherche, on remet tout comme c'était avant
-    if(searchString.length === 0) {
-        main.append(container);
-        container.prepend(separator);
-        btnLoader.style.display = 'block';
-    } 
+document.addEventListener("click", (e) => {
+  if (!searchBarContainer.contains(e.target)) {
+    searchBarDropdown.classList.remove("opened");
+  }
 });
 
 // Méthode qui permet de requêter l'api et récupérer des données
 
 const loadResults = async () => {
-    try {
-        const response = await fetch(URL);
-        const data = await response.json();
-        selectedResults = data.assets;
-    } catch (err) {
-        console.error(err);
-    }
+  try {
+    const response = await fetch(URL);
+    const data = await response.json();
+    nftList = data.assets;
+
+    // Gestionnaire d'événement qui permet de vérifier ce que saisit l'utilisateur, filtrer les nfts qui commencent par la chaîne de caractères saisie puis les afficher dans une liste 
+
+    searchBar.addEventListener("input", (e) => {
+      const searchString = e.target.value.toLowerCase().trimStart();
+      const filteredResults = nftList.filter((nft) =>
+        nft.name.toLowerCase().startsWith(searchString)
+      );
+
+      if (filteredResults.length > 0) {
+        resultsList.innerHTML = "";
+        searchBarDropdown.classList.add("opened");
+        filteredResults.length > 4
+          ? (searchBarDropdown.style.overflowY = "scroll")
+          : (searchBarDropdown.style.overflowY = "hidden");
+        filteredResults.forEach((result) => {
+          const resultItem = document.createElement("li");
+          resultItem.className = "search-bar-result";
+          resultItem.innerText = result.name;
+          resultItem.addEventListener("click", () => {
+            window.location.href = `./product/index.html?id=${result.id}`;
+          });
+          resultsList.appendChild(resultItem);
+        });
+      } else {
+        searchBarDropdown.classList.remove("opened");
+        resultsList.innerHTML = "";
+      }
+    });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
-// // Fonction qui crée les cartes à partir du tableau de données retourné par l'api
-
-const displayResults = (results) => {
-    const htmlString = results
-      .map((result) => {
-        return `<div class="product-card">
-        <div class="product-image">
-          <img src="${result.image_url}" alt="nft ${result.name}">
-        </div>
-        <div class="product-info">
-          <p class="product-name"><span>Nom</span> ${
-            result.name[0].toUpperCase() + result.name.slice(1)
-          }</p>
-          ${
-            result.creator.username &&
-            `<p class="product-creator"><span>Créateur</span> ${
-              result.creator.username[0].toUpperCase() +
-              result.creator.username.slice(1)
-            }</p>`
-          }
-          ${
-            result.description &&
-            `<p class="product-description"><span>Description</span> ${
-              result.description[0].toUpperCase() + result.description.slice(1)
-            }</p>`
-          }
-          <p class="product-sales"><span>Nombre de ventes</span> ${
-            result.sales
-          }</p>
-          <button class="more-info" onclick="window.location.href = './product/index.html?id=${
-            result.id
-          }'">Plus d'info</button>
-        </div>
-    </div>`;
-      })
-      .join('');
-      resultsList.innerHTML = htmlString;
-  }
-
-  loadResults();
+loadResults();

@@ -99,6 +99,7 @@ header {
                 display: block;
                 position: absolute;
                 width: 100%;
+                max-height: 100px;
                 margin-top: 10px;
                 font-size: 0.8rem;
                 color: #222;
@@ -106,6 +107,19 @@ header {
                 border: 1px solid #222;
                 border-radius: 3px;
                 padding: 10px 20px;
+            }
+        }
+
+        &-result {
+            list-style: none;
+            cursor: pointer;
+
+            &:hover {
+                font-weight: bold;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
             }
         }
     }
