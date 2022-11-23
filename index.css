@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-.gallery .product-card .more-info, .search-filter-dropdown .range-reset, .search-filter-dropdown .range-search, .search-filter-dropdown .creators-reset {
+.gallery .product-card .more-info, .shuffle-gallery .product-card .more-info, .search-filter-dropdown .range-reset, .search-filter-dropdown .range-search, .search-filter-dropdown .creators-reset {
   font-size: 0.8rem;
   color: #222;
   padding: 5px;
@@ -200,10 +200,8 @@ main h2 {
 }
 main .shuffle-gallery {
   padding: 0 30px;
-  text-transform: uppercase;
   text-align: center;
   width: 100%;
-  height: 200px;
 }
 main .separator {
   height: 1px;
@@ -224,7 +222,7 @@ main .load-more {
   cursor: pointer;
 }
 
-.gallery {
+.gallery, .shuffle-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, 360px);
   grid-auto-rows: 620px;
@@ -235,51 +233,51 @@ main .load-more {
   padding: 0 30px;
   margin: 0 auto 50px;
 }
-.gallery .product-card {
+.gallery .product-card, .shuffle-gallery .product-card {
   width: 100%;
   height: 100%;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(34, 34, 34, 0.293);
   overflow: hidden;
 }
-.gallery .product-card .more-info {
+.gallery .product-card .more-info, .shuffle-gallery .product-card .more-info {
   margin-top: auto;
 }
-.gallery .product-image {
+.gallery .product-image, .shuffle-gallery .product-image {
   height: 50%;
 }
-.gallery .product-image.skeleton-anim {
+.gallery .product-image.skeleton-anim, .shuffle-gallery .product-image.skeleton-anim {
   background: #4c4c4c;
   -webkit-animation: skeleton 0.8s ease-in-out infinite alternate;
           animation: skeleton 0.8s ease-in-out infinite alternate;
 }
-.gallery .product-image img {
+.gallery .product-image img, .shuffle-gallery .product-image img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.gallery .product-info {
+.gallery .product-info, .shuffle-gallery .product-info {
   display: flex;
   flex-direction: column;
   height: 50%;
   padding: 20px;
 }
-.gallery .product-info > *:not(button) {
+.gallery .product-info > *:not(button), .shuffle-gallery .product-info > *:not(button) {
   flex-shrink: 0;
   margin-bottom: 10px;
 }
-.gallery .product-info > *:not(button).skeleton-anim {
+.gallery .product-info > *:not(button).skeleton-anim, .shuffle-gallery .product-info > *:not(button).skeleton-anim {
   height: 25px;
   background: #4c4c4c;
   -webkit-animation: skeleton 0.8s ease-in-out infinite alternate;
           animation: skeleton 0.8s ease-in-out infinite alternate;
 }
-.gallery .product-info span {
+.gallery .product-info span, .shuffle-gallery .product-info span {
   display: block;
   font-weight: bold;
 }
-.gallery .product-description {
+.gallery .product-description, .shuffle-gallery .product-description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
