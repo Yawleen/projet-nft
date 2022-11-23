@@ -1,7 +1,3 @@
-// API
-
-const URL = "https://awesome-nft-app.herokuapp.com/";
-
 // Sélection d'éléments dans le DOM
 
 const searchBar = document.querySelector("#search-bar");
@@ -21,7 +17,7 @@ document.addEventListener("click", (e) => {
 
 const loadResults = async () => {
   try {
-    const response = await fetch(URL);
+    const response = await fetch('https://awesome-nft-app.herokuapp.com/');
     const data = await response.json();
     nftList = data.assets;
 

@@ -1,5 +1,3 @@
-const urlValue = 'https://awesome-nft-app.herokuapp.com/';
-
 // Variables -> sélection des éléments dans le dom récupération de la zone où on randomize les cards de NFT du jour et le bouton pour produire l'évènement au clic
 
 const shuffleZone = document.querySelector(".shuffle-gallery");
@@ -9,7 +7,7 @@ const btnShuffle = document.querySelector(".shuffle-option");
 
 const getRandom = async () => {
   try {
-    const response = await fetch(urlValue);
+    const response = await fetch('https://awesome-nft-app.herokuapp.com/');
     const data = await response.json();
     const keys = data.assets;
     const nodeElements = document.querySelectorAll('.shuffle-card');
@@ -45,9 +43,10 @@ function displayNFT(nft) {
                 nft.creator.username.slice(1)
             }</p>`
           }
-          <button class="more-info" onclick="window.open('../product/index.html?id=${
+
+          <button class="more-info" onclick="window.location.href = './product/index.html?id=${
             nft.id
-          }', '_blank')">Plus d'info</button>
+          }'">Plus d'info</button>
         </div>
         </div>`;
 
