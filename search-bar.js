@@ -59,3 +59,5 @@ const loadResults = async () => {
 };
 
 loadResults();
+
+  loadResults();
