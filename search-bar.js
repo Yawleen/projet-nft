@@ -1,5 +1,4 @@
 // Sélection d'éléments dans le DOM
-
 const searchBar = document.querySelector("#search-bar");
 const searchBarDropdown = document.querySelector(".search-bar-dropdown");
 const searchBarContainer = document.querySelector(".search-bar-container");
