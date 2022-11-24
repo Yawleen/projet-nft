@@ -1,7 +1,6 @@
 
 # Projet NFT
 
-
 ## Noms et prénoms / mails
 - CONSTABLE Yolène / yoleneconstable@live.fr
 - HY Aline / hy.aline@outlook.com 
@@ -10,7 +9,7 @@
 ## Comment lancer le projet
 Ouvrir le lien suivant dans le navigateur pour visualiser le projet : https://yawleen.github.io/projet-nft/
 
-## Liste des fonctionnalités
+## Liste des fonctionnalités faites 
 - Lister les produits 
 - Voir les détails d’un produit 
 - Filtrer par créateur 
